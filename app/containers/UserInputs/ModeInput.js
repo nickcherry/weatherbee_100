@@ -10,7 +10,7 @@ import Select from './Select';
 export class ModeInput extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <InputWrapper onClick={() => this.props.openDropdown(this.selectEl)}>
+      <InputWrapper omitPadding onClick={() => this.props.openDropdown(this.selectEl)}>
         <Select
           defaultValue={this.props.value}
           innerRef={(el) => this.selectEl = el}

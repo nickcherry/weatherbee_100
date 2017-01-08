@@ -6,6 +6,8 @@ import BaseSelect from '../../components/Select';
 import { AVVC_MODE, ACPC_MODE, SPONT_MODE } from '../Ventilator/constants';
 
 const Select = styled(BaseSelect)`
+  height: 2.25em;
+  line-height: 1em;
   text-align: center;
   text-indent: ${(props) => {
     if (bowser.firefox) return 0;

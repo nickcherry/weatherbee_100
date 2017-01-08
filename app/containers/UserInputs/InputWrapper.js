@@ -8,7 +8,7 @@ const InputWrapper = styled.div`
   box-shadow: inset 0 0 2px rgba(0, 0, 0, .1);
   cursor: pointer;
   margin: 4px;
-  padding: .5em .5em .65em;
+  padding: ${(props) => props.omitPadding ? 0 : '.5em .5em .65em'};
   text-shadow: 0 0 1px rgba(0, 0, 0, .2);
   user-select: none;
   &:active {
