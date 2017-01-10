@@ -1,3 +1,5 @@
+export const DISABLE_USER_INPUT_EDITING = 'weatherbee_100/Ventilator/DISABLE_USER_INPUT_EDITING';
+export const ENABLE_USER_INPUT_EDITING = 'weatherbee_100/Ventilator/ENABLE_USER_INPUT_EDITING';
 export const UPDATE_USER_INPUT = 'weatherbee_100/Ventilator/UPDATE_USER_INPUT';
 export const TICK = 'weatherbee_100/Ventilator/TICK';
 

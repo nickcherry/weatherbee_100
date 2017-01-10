@@ -38,10 +38,17 @@ export class UserInputs extends React.PureComponent { // eslint-disable-line rea
       <Wrapper>
         {this.getRows().map((inputNames, rowIndex) => {
           const cells = inputNames.map((inputName, cellIndex) => {
-            if (!inputName) return <Cell key={cellIndex}><Placeholder /></Cell>;
+            if (!inputName) {
+              return <Cell key={cellIndex}><Placeholder /></Cell>;
+            }
             return (
               <Cell key={cellIndex}>
-                <NumericInput name={inputName} value={this.props[inputName]}></NumericInput>
+                <NumericInput
+                  name={inputName}
+                  value={this.props[inputName]}
+                  incrementSize={10}
+                >
+                </NumericInput>
               </Cell>
             );
           });

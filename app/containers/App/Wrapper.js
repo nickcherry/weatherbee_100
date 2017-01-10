@@ -11,6 +11,7 @@ const Wrapper = styled.div`
   max-width: ${bowser.mobile || bowser.tablet ? 'none' : '320px'};
   min-height: 500px;
   position: relative;
+  overflow: hidden;
   width: 100%;
 `;
 

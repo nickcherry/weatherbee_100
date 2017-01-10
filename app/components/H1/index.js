@@ -4,7 +4,7 @@ import { getHexColor, getCursiveFont } from '../../utils/styleHelpers';
 const H1 = styled.h1`
   background: linear-gradient(to right, ${getHexColor('electricViolet')} 20%, ${getHexColor('studio')} 55%, ${getHexColor('cerise')} 90%);
   -webkit-background-clip: text;
-  color: ${getHexColor('tuna')};
+  color: ${getHexColor('electricViolet')};
   font-family: ${getCursiveFont()};
   font-size: 1.75em;
   font-weight: 400;

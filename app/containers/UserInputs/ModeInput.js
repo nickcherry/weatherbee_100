@@ -4,26 +4,29 @@ import { connect } from 'react-redux';
 import { AVVC_MODE, ACPC_MODE, SIMVVC_MODE, SIMVPC_MODE, SPONT_MODE } from '../Ventilator/constants';
 import { updateUserInput } from '../Ventilator/actions';
 
-import InputWrapper from './InputWrapper';
+import InputInnerWrapper from './InputInnerWrapper';
+import InputOuterWrapper from './InputOuterWrapper';
 import Select from './Select';
 
 export class ModeInput extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <InputWrapper omitPadding>
-        <Select
-          defaultValue={this.props.value}
-          innerRef={(el) => this.selectEl = el}
-          onChange={(e) => this.props.valueChanged(e, this.props.name)}
-        >
-          <option>{AVVC_MODE}</option>
-          <option>{ACPC_MODE}</option>
-          <option>{SIMVVC_MODE}</option>
-          <option>{SIMVPC_MODE}</option>
-          <option>{SPONT_MODE}</option>
-        </Select>
+      <InputOuterWrapper>
+        <InputInnerWrapper omitPadding>
+          <Select
+            defaultValue={this.props.value}
+            innerRef={(el) => this.selectEl = el}
+            onChange={(e) => this.props.valueChanged(e, this.props.name)}
+          >
+            <option>{AVVC_MODE}</option>
+            <option>{ACPC_MODE}</option>
+            <option>{SIMVVC_MODE}</option>
+            <option>{SIMVPC_MODE}</option>
+            <option>{SPONT_MODE}</option>
+          </Select>
 
-      </InputWrapper>
+        </InputInnerWrapper>
+      </InputOuterWrapper>
     );
   }
 }

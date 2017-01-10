@@ -1,5 +1,5 @@
 import { fromJS } from 'immutable';
-import { SIMVVC_MODE, WAVEFORM_DATA_POINTS, UPDATE_USER_INPUT, TICK } from './constants';
+import { DISABLE_USER_INPUT_EDITING, ENABLE_USER_INPUT_EDITING, SIMVVC_MODE, WAVEFORM_DATA_POINTS, UPDATE_USER_INPUT, TICK } from './constants';
 
 import calculateFreq from './calculators/patientFeedback/freq';
 import calculateIe from './calculators/patientFeedback/ie';
@@ -14,6 +14,7 @@ import calculatePressure from './calculators/waveforms/pressure';
 import calculateVolume from './calculators/waveforms/volume';
 
 const initialState = fromJS({
+  editing: undefined,
   time: 0,
   userInputs: {
     fi02: 1,
@@ -42,6 +43,14 @@ const initialState = fromJS({
     volume: [],
   },
 });
+
+function handleDisableUserInputEditing(state) {
+  return state.set('editing', undefined);
+}
+
+function handleEnableUserInputEditing(state, action) {
+  return state.set('editing', action.inputName);
+}
 
 function handleUpdateUserInput(state, action) {
   return state.setIn(['userInputs', action.inputName], action.inputValue);
@@ -78,6 +87,10 @@ function handleTick(state) {
 
 function ventilatorReducer(state = initialState, action) {
   switch (action.type) {
+    case DISABLE_USER_INPUT_EDITING:
+      return handleDisableUserInputEditing(state, action);
+    case ENABLE_USER_INPUT_EDITING:
+      return handleEnableUserInputEditing(state, action);
     case UPDATE_USER_INPUT:
       return handleUpdateUserInput(state, action);
     case TICK:

@@ -4,7 +4,6 @@ import { getDepth } from '../../utils/styleHelpers';
 const MainContent = styled.div`
   bottom: 0;
   left: 0;
-  min-height: 568px;
   position: absolute;
   right: 0;
   top: 0;

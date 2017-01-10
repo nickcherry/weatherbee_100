@@ -3,20 +3,53 @@ import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 
 import messages from './messages';
+import { disableUserInputEditing, enableUserInputEditing, updateUserInput } from '../Ventilator/actions';
 
+import Decrement from './Decrement';
+import Increment from './Increment';
+import InputInnerWrapper from './InputInnerWrapper';
+import InputOuterWrapper from './InputOuterWrapper';
+import InputUnderlay from './InputUnderlay';
 import Label from './Label';
-import InputWrapper from './InputWrapper';
 import Value from './Value';
 
 export class NumericInput extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+  constructor(props) {
+    super(props);
+    this.state = { editing: false };
+  }
+
   render() {
     return (
-      <InputWrapper onClick={() => this.props.showModal(this.props.name, this.props.value)}>
-        <Value>{this.props.value}</Value>
-        <Label>
-          <FormattedMessage {...messages[`${this.props.name}Short`]}></FormattedMessage>
-        </Label>
-      </InputWrapper>
+      <InputOuterWrapper>
+        {this.props.editing ?
+          <InputUnderlay
+            onClick={() => this.props.disableEditing(this.props.name)}
+          /> :
+          null}
+
+        {this.props.editing ?
+          <Increment
+            onClick={() => this.props.increment(this.props.name, this.props.value, this.props.incrementSize)}
+          >▲</Increment> :
+          null}
+
+        {this.props.editing ?
+          <Decrement
+            onClick={() => this.props.decrement(this.props.name, this.props.value, this.props.incrementSize)}
+          >▼</Decrement> :
+          null}
+
+        <InputInnerWrapper
+          editing={this.props.editing}
+          onClick={() => this.props.enableEditing(this.props.name)}
+        >
+          <Value>{this.props.value}</Value>
+          <Label>
+            <FormattedMessage {...messages[`${this.props.name}Short`]}></FormattedMessage>
+          </Label>
+        </InputInnerWrapper>
+      </InputOuterWrapper>
     );
   }
 }
@@ -27,14 +60,34 @@ NumericInput.propTypes = {
     React.PropTypes.string,
     React.PropTypes.number,
   ]),
-  showModal: React.PropTypes.func,
+  incrementSize: React.PropTypes.number,
+  editing: React.PropTypes.bool,
+  enableEditing: React.PropTypes.func,
+  disableEditing: React.PropTypes.func,
+  increment: React.PropTypes.func,
+  decrement: React.PropTypes.func,
 };
 
-function mapDispatchToProps() {
+function mapStateToProps(state, ownProps) {
   return {
-    showModal: () => null,
+    name: ownProps.name,
+    value: ownProps.value,
+    incrementSize: ownProps.incrementSize,
+    editing: state.getIn(['ventilator', 'editing']) === ownProps.name,
   };
 }
 
-// Wrap the component to inject dispatch and state into it
-export default connect(this.props, mapDispatchToProps)(NumericInput);
+function mapDispatchToProps(dispatch) {
+  return {
+    enableEditing: (name) => dispatch(enableUserInputEditing(name)),
+    disableEditing: (name) => dispatch(disableUserInputEditing(name)),
+    increment: (name, currentValue, incrementSize) => {
+      dispatch(updateUserInput(name, currentValue + incrementSize));
+    },
+    decrement: (name, currentValue, incrementSize) => {
+      dispatch(updateUserInput(name, currentValue - incrementSize));
+    },
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NumericInput);
