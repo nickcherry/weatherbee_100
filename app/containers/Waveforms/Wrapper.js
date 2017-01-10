@@ -6,6 +6,7 @@ const Wrapper = styled.div`
   flex-grow: 100;
   flex-direction: column;
   margin: 0 12px;
+  pointer-events: none;
 `;
 
 export default Wrapper;
