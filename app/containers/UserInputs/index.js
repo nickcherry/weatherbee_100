@@ -33,6 +33,11 @@ export class UserInputs extends React.PureComponent { // eslint-disable-line rea
     }
   }
 
+  getIncrementSize(inputName) {
+    if (inputName === 'tidalVolume') return 50;
+    return 1;
+  }
+
   render() {
     return (
       <Wrapper>
@@ -46,7 +51,7 @@ export class UserInputs extends React.PureComponent { // eslint-disable-line rea
                 <NumericInput
                   name={inputName}
                   value={this.props[inputName]}
-                  incrementSize={10}
+                  incrementSize={this.getIncrementSize(inputName)}
                 >
                 </NumericInput>
               </Cell>
