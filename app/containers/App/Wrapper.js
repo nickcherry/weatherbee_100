@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import bowser from 'bowser';
+
 import { getHexColor } from '../../utils/styleHelpers';
 
 const Wrapper = styled.div`
@@ -6,7 +8,7 @@ const Wrapper = styled.div`
   font-weight: 300;
   height: 100%;
   margin: auto;
-  max-width: 768px;
+  max-width: ${bowser.mobile || bowser.tablet ? 'none' : '320px'};
   min-height: 500px;
   position: relative;
   width: 100%;
