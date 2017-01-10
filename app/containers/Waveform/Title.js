@@ -9,6 +9,7 @@ const Title = styled.div`
   opacity: 0.75;
   position: absolute;
   top: 5px;
+  user-select: none;
 `;
 
 export default Title;
