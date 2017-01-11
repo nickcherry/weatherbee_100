@@ -8,6 +8,7 @@ const Label = styled.label`
   font-weight: 400;
   line-height: 1em;
   margin-top: .25em;
+  user-select: none;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 `;
 
