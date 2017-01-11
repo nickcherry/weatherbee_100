@@ -42,7 +42,7 @@ export class NumericInput extends React.PureComponent { // eslint-disable-line r
 
         <InputInnerWrapper
           editing={this.props.editing}
-          onClick={() => this.props.enableEditing(this.props.name)}
+          onClick={() => this.props.toggleEditing(this.props.name, this.props.editing)}
         >
           <Value>{this.props.value}</Value>
           <Label>
@@ -62,7 +62,7 @@ NumericInput.propTypes = {
   ]),
   incrementSize: React.PropTypes.number,
   editing: React.PropTypes.bool,
-  enableEditing: React.PropTypes.func,
+  toggleEditing: React.PropTypes.func,
   disableEditing: React.PropTypes.func,
   increment: React.PropTypes.func,
   decrement: React.PropTypes.func,
@@ -79,7 +79,13 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    enableEditing: (name) => dispatch(enableUserInputEditing(name)),
+    toggleEditing: (name, editing) => {
+      if (editing) {
+        dispatch(disableUserInputEditing(name));
+      } else {
+        dispatch(enableUserInputEditing(name));
+      }
+    },
     disableEditing: (name) => dispatch(disableUserInputEditing(name)),
     increment: (name, currentValue, incrementSize) => {
       dispatch(updateUserInput(name, currentValue + incrementSize));
