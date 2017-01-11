@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import incrementStyle from './incrementStyle';
 
 const Decrement = styled(incrementStyle)`
-  bottom: -36px;
+  left: 0;
 `;
 
 export default Decrement;
