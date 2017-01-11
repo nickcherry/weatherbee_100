@@ -7,11 +7,12 @@ const incrementStyle = styled.div`
   -webkit-background-clip: text;
   -moz-background-clip
   background-clip: text;
-  bottom: -30px;
+  bottom: -48px;
   color: ${getRgbaColor('windsor')};
   cursor: pointer;
   font-size: 30px;
   line-height: 1em;
+  padding-bottom: 20px;
   position: absolute;
   text-align: center;
   transform: scaleX(1.25);
