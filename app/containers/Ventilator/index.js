@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
+
 import { FormattedMessage } from 'react-intl';
 
 import { updateWaveforms } from './actions';
@@ -29,7 +31,9 @@ class Ventilator extends React.PureComponent { // eslint-disable-line react/pref
     return (
       <Wrapper>
         <header>
-          <PatientIcon />
+          <Link to="/history">
+            <PatientIcon />
+          </Link>
           <H1>
             <FormattedMessage {...messages.header} />
           </H1>

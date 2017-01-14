@@ -35,6 +35,25 @@ export default function createRoutes(store) {
 
         importModules.catch(errorLoading);
       },
+    },
+    {
+      path: '/history',
+      name: 'patientHistory',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/PatientHistory/reducer'),
+          System.import('containers/PatientHistory'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, component]) => {
+          injectReducer('patientHistory', reducer.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
     }, {
       path: '*',
       name: 'notfound',
