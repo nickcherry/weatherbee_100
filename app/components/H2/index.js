@@ -5,6 +5,7 @@ const H2 = styled.h2`
   font-weight: 300;
   margin: 0.15em auto;
   text-align: center;
+  user-select: none;
 `;
 
 export default H2;

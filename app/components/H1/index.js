@@ -13,6 +13,7 @@ const H1 = styled.h1`
   margin: .5em auto 1px;
   padding-bottom: 0;
   text-align: center;
+  user-select: none;
   -webkit-text-fill-color: transparent;
   width: 100%;
 `;
