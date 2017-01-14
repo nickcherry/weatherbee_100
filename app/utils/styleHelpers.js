@@ -20,6 +20,7 @@ const COLORS = {
   frenchGrey: '#b6b6c0',
   electricViolet: '#aa29e8',
   londonHue: '#bda5c9',
+  mediumRedViolet: '#b52ca2',
   mineShaft: '#1f1f1f',
   studio: '#8A40AF',
   tuna: '#33333d',

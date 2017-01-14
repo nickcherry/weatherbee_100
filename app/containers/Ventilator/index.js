@@ -8,6 +8,7 @@ import messages from './messages';
 
 import H1 from '../../components/H1';
 import PatientFeedback from '../PatientFeedback';
+import PatientIcon from './PatientIcon';
 import UserInputs from '../UserInputs/index';
 import Waveforms from '../Waveforms/index';
 import Wrapper from './Wrapper';
@@ -27,9 +28,12 @@ class Ventilator extends React.PureComponent { // eslint-disable-line react/pref
   render() {
     return (
       <Wrapper>
-        <H1>
-          <FormattedMessage {...messages.header} />
-        </H1>
+        <header>
+          <PatientIcon />
+          <H1>
+            <FormattedMessage {...messages.header} />
+          </H1>
+        </header>
         <PatientFeedback />
         <Waveforms />
         <UserInputs />
