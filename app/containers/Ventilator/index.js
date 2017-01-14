@@ -1,6 +1,8 @@
 import React from 'react';
+import ReactDom from 'react-dom';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+const PageTransition = require('react-router-page-transition').default(React, ReactDom);
 
 import { FormattedMessage } from 'react-intl';
 
@@ -29,19 +31,21 @@ class Ventilator extends React.PureComponent { // eslint-disable-line react/pref
 
   render() {
     return (
-      <Wrapper>
-        <header>
-          <Link to="/history">
-            <PatientIcon />
-          </Link>
-          <H1>
-            <FormattedMessage {...messages.header} />
-          </H1>
-        </header>
-        <PatientFeedback />
-        <Waveforms />
-        <UserInputs />
-      </Wrapper>
+      <PageTransition>
+        <Wrapper>
+          <header>
+            <Link to="/history">
+              <PatientIcon />
+            </Link>
+            <H1>
+              <FormattedMessage {...messages.header} />
+            </H1>
+          </header>
+          <PatientFeedback />
+          <Waveforms />
+          <UserInputs />
+        </Wrapper>
+      </PageTransition>
     );
   }
 }
