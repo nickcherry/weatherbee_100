@@ -1,4 +1,6 @@
 import React from 'react';
+import EasyTransition from 'react-easy-transition';
+
 import Background from './Background';
 import BackgroundPattern from './BackgroundPattern';
 import MainContent from './MainContent';
@@ -17,10 +19,21 @@ export default class App extends React.PureComponent { // eslint-disable-line re
         <Background />
         <BackgroundPattern />
         <MainContent>
-          {React.Children.toArray(this.props.children)}
+          <EasyTransition
+            path={this.props.location.pathname}
+            initialStyle={{ opacity: 0 }}
+            transition="opacity 0.2s ease-out"
+            finalStyle={{ opacity: 1 }}
+          >
+            {React.Children.toArray(this.props.children)}
+          </EasyTransition>
         </MainContent>
         <ModalRoot />
       </Wrapper>
     );
   }
 }
+
+App.propTypes = {
+  location: React.PropTypes.object,
+};
