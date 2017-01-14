@@ -6,6 +6,7 @@ const FeedbackValue = styled.div`
   font-size: 18px;
   line-height: 1em;
   margin-bottom: .2em;
+  user-select: none;
 `;
 
 export default FeedbackValue;

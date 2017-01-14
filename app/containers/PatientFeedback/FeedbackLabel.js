@@ -6,6 +6,7 @@ const FeedbackLabel = styled.label`
   display: block;
   font-size: 10px;
   line-height: 1em;
+  user-select: none;
 `;
 
 export default FeedbackLabel;
