@@ -32,4 +32,22 @@ injectGlobal`
     right: 0;
     top: 0;
   }
+
+  #ventilator-page {
+    &.transition-appear {
+      background: red;
+      &.transition-appear-active {
+        background: blue;
+      }
+    }
+  }
+
+  #patient-history-page {
+    &.transition-appear {
+      background: yellow;
+      &.transition-appear-active {
+        background: green;
+      }
+    }
+  }
 `;
