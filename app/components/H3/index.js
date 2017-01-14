@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 
+import { getCursiveFont } from '../../utils/styleHelpers';
+
 const H3 = styled.h3`
-  font-size: 1.25em;
+  font-family: ${getCursiveFont()};
+  font-size: 1em;
   font-weight: 400;
-  margin: 0.25em auto;
 `;
 
 export default H3;

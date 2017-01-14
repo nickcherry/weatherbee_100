@@ -1,7 +1,8 @@
 import { fromJS } from 'immutable';
+import { PATIENTS } from './constants';
 
 const initialState = fromJS({
-  patient: undefined,
+  patient: PATIENTS[0],
 });
 
 

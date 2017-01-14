@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import { getCursiveFont } from '../../utils/styleHelpers';
 
-const Title = styled.div`
+import H3 from '../../components/H3';
+
+const Title = styled(H3)`
   color: ${(props) => props.color};
-  font-family: ${getCursiveFont()};
-  font-size: 16px;
   left: 0;
+  margin: 0;
   opacity: 0.75;
   position: absolute;
   top: 5px;
