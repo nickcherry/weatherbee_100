@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { getRgbaColor, getDepth } from '../../utils/styleHelpers';
+import { getRgbaColor } from '../../utils/styleHelpers';
 import patientIcon from '../../images/patient.svg';
 
 const PatientIcon = styled.div`
@@ -12,7 +12,6 @@ const PatientIcon = styled.div`
   position: absolute;
   top: 12px;
   width: 29px;
-  z-index: ${getDepth('linkIcon')};
 `;
 
 export default PatientIcon;
