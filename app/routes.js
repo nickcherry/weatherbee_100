@@ -4,6 +4,11 @@
 // about the code splitting business
 import { getAsyncInjectors } from 'utils/asyncInjectors';
 
+const ROUTES_MAP = {
+  ventilator: '/',
+  patientHistory: '/patient-history',
+};
+
 const errorLoading = (err) => {
   console.error('Dynamic page loading failed', err); // eslint-disable-line no-console
 };
@@ -12,14 +17,17 @@ const loadModule = (cb) => (componentModule) => {
   cb(null, componentModule.default);
 };
 
+export function getPath(name) {
+  return ROUTES_MAP[name];
+}
+
 export default function createRoutes(store) {
   // Create reusable async injectors using getAsyncInjectors factory
   const { injectReducer, injectSagas } = getAsyncInjectors(store); // eslint-disable-line no-unused-vars
 
   return [
     {
-      path: '/',
-      name: 'ventilator',
+      path: ROUTES_MAP.ventilator,
       getComponent(nextState, cb) {
         const importModules = Promise.all([
           System.import('containers/Ventilator/reducer'),
@@ -37,8 +45,7 @@ export default function createRoutes(store) {
       },
     },
     {
-      path: '/history',
-      name: 'patientHistory',
+      path: ROUTES_MAP.patientHistory,
       getComponent(nextState, cb) {
         const importModules = Promise.all([
           System.import('containers/PatientHistory/reducer'),
@@ -53,14 +60,6 @@ export default function createRoutes(store) {
         });
 
         importModules.catch(errorLoading);
-      },
-    }, {
-      path: '*',
-      name: 'notfound',
-      getComponent(nextState, cb) {
-        System.import('containers/NotFoundPage')
-          .then(loadModule(cb))
-          .catch(errorLoading);
       },
     },
   ];

@@ -4,6 +4,8 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
 
+const publicPath = '/weatherbee-100/';
+
 module.exports = require('./webpack.base.babel')({
   // In production, we skip all hot-reloading stuff
   entry: [
@@ -14,6 +16,7 @@ module.exports = require('./webpack.base.babel')({
   output: {
     filename: '[name].[chunkhash].js',
     chunkFilename: '[name].[chunkhash].chunk.js',
+    publicPath,
   },
 
   plugins: [
@@ -49,7 +52,7 @@ module.exports = require('./webpack.base.babel')({
     // assets manipulations and do leak its manipulations to HtmlWebpackPlugin
     new OfflinePlugin({
       relativePaths: false,
-      publicPath: '/',
+      publicPath,
 
       // No need to cache .htaccess. See http://mxs.is/googmp,
       // this is applied before any match in `caches` section

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { FormattedMessage } from 'react-intl';
 
+import { getPath } from '../../routes';
 import { updateWaveforms } from './actions';
 import { WAVEFORM_INTERVAL } from './constants';
 import messages from './messages';
@@ -34,7 +35,7 @@ class Ventilator extends React.PureComponent { // eslint-disable-line react/pref
     return (
       <Wrapper>
         <header>
-          <Link to="/history">
+          <Link to={getPath('patientHistory')}>
             <PatientIcon />
           </Link>
           <H1>

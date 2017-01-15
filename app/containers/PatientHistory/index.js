@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 // import { FormattedMessage } from 'react-intl';
 
+import { getPath } from '../../routes';
 import PatientDescription from './PatientDescription';
 import PatientName from './PatientName';
 import VentilatorIcon from './VentilatorIcon';
@@ -18,7 +19,7 @@ class PatientHistory extends React.PureComponent { // eslint-disable-line react/
   render() {
     return (
       <Wrapper>
-        <Link to="/">
+        <Link to={getPath('ventilator')}>
           <VentilatorIcon />
         </Link>
         <PatientName>{this.props.name}</PatientName>

@@ -27,3 +27,11 @@ To start the test suite, run the following from the project root:
 ```shell
 npm test
 ```
+
+## Deployment
+
+Create a `secrets.json` file, which follows the pattern defined in `secrets.template.json` (but has real credentials), then run the following from the project root to deploy to AWS:
+
+```shell
+npm run deploy
+```

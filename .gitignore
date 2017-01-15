@@ -4,6 +4,9 @@ build
 node_modules
 stats.json
 
+# Sensitive
+secrets.json
+
 # Cruft
 .DS_Store
 npm-debug.log
