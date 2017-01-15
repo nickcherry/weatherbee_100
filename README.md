@@ -1,6 +1,6 @@
 # Weatherbee-100
 
-A ventilator simulation app, work in progress available at [weatherbee-100.herokuapp.com](https://weatherbee-100.herokuapp.com).
+A ventilator simulation app, work in progress available at [https://s3.amazonaws.com/weatherbee-100/index.html](https://s3.amazonaws.com/weatherbee-100/index.html).
 
 ## Development Setup
 
