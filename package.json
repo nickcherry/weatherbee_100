@@ -205,6 +205,7 @@
     "lodash": "4.16.4",
     "minimist": "1.2.0",
     "react": "15.3.2",
+    "react-addons-css-transition-group": "^15.4.2",
     "react-dom": "15.3.2",
     "react-easy-chart": "^0.1.12",
     "react-fastclick": "^2.1.2",

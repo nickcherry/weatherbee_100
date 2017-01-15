@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import Background from './Background';
 import BackgroundPattern from './BackgroundPattern';
@@ -10,6 +11,7 @@ export default class App extends React.PureComponent { // eslint-disable-line re
 
   static propTypes = {
     children: React.PropTypes.node,
+    location: React.PropTypes.object,
   };
 
   render() {
@@ -18,7 +20,16 @@ export default class App extends React.PureComponent { // eslint-disable-line re
         <Background />
         <BackgroundPattern />
         <MainContent>
-          {React.Children.toArray(this.props.children)}
+          <ReactCSSTransitionGroup
+            transitionName="main-content"
+            transitionAppear
+            transitionLeave
+            transitionAppearTimeout={350}
+            transitionEnterTimeout={350}
+            transitionLeaveTimeout={350}
+          >
+            {React.cloneElement(this.props.children, { key: this.props.location.pathname })}
+          </ReactCSSTransitionGroup>
         </MainContent>
         <ModalRoot />
       </Wrapper>

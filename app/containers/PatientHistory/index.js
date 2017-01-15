@@ -9,6 +9,12 @@ import VentilatorIcon from './VentilatorIcon';
 import Wrapper from './Wrapper';
 
 class PatientHistory extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+
+  static propTypes = {
+    name: React.PropTypes.string,
+    description: React.PropTypes.string,
+  };
+
   render() {
     return (
       <Wrapper>
@@ -21,11 +27,6 @@ class PatientHistory extends React.PureComponent { // eslint-disable-line react/
     );
   }
 }
-
-PatientHistory.propTypes = {
-  name: React.PropTypes.string,
-  description: React.PropTypes.string,
-};
 
 function mapStateToProps(state) {
   return {

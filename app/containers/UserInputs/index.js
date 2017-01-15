@@ -11,6 +11,20 @@ import Row from './Row';
 import Wrapper from './Wrapper';
 
 export class UserInputs extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+
+  static propTypes = {
+    fi02: React.PropTypes.number, // eslint-disable-line react/no-unused-prop-types
+    flow: React.PropTypes.number, // eslint-disable-line react/no-unused-prop-types
+    iTime: React.PropTypes.number, // eslint-disable-line react/no-unused-prop-types
+    mode: React.PropTypes.string, // eslint-disable-line react/no-unused-prop-types
+    peep: React.PropTypes.number, // eslint-disable-line react/no-unused-prop-types
+    pressureControl: React.PropTypes.number, // eslint-disable-line react/no-unused-prop-types
+    pressureSupport: React.PropTypes.number, // eslint-disable-line react/no-unused-prop-types
+    rate: React.PropTypes.number, // eslint-disable-line react/no-unused-prop-types
+    sensitivity: React.PropTypes.number, // eslint-disable-line react/no-unused-prop-types
+    tidalVolume: React.PropTypes.number, // eslint-disable-line react/no-unused-prop-types
+  };
+
   getRows() {
     switch (this.props.mode) {
       case AVVC_MODE:
@@ -68,19 +82,6 @@ export class UserInputs extends React.PureComponent { // eslint-disable-line rea
     );
   }
 }
-
-UserInputs.propTypes = {
-  fi02: React.PropTypes.number,
-  flow: React.PropTypes.number,
-  iTime: React.PropTypes.number,
-  mode: React.PropTypes.string,
-  peep: React.PropTypes.number,
-  pressureControl: React.PropTypes.number,
-  pressureSupport: React.PropTypes.number,
-  rate: React.PropTypes.number,
-  sensitivity: React.PropTypes.number,
-  tidalVolume: React.PropTypes.number,
-};
 
 function mapStateToProps(state) {
   const userInputs = state.getIn(['ventilator', 'userInputs']);

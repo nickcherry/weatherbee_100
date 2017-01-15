@@ -18,6 +18,10 @@ let interval;
 
 class Ventilator extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
+  static propTypes = {
+    updateWaveforms: React.PropTypes.func,
+  };
+
   componentDidMount() {
     interval = setInterval(this.props.updateWaveforms, WAVEFORM_INTERVAL);
   }
@@ -44,10 +48,6 @@ class Ventilator extends React.PureComponent { // eslint-disable-line react/pref
     );
   }
 }
-
-Ventilator.propTypes = {
-  updateWaveforms: React.PropTypes.func,
-};
 
 function mapDispatchToProps(dispatch) {
   return {

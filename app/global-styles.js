@@ -33,21 +33,21 @@ injectGlobal`
     top: 0;
   }
 
-  #ventilator-page {
-    &.transition-appear {
-      background: red;
-      &.transition-appear-active {
-        background: blue;
-      }
+  .main-content-appear,
+  .main-content-enter {
+    opacity: 0;
+    transition: opacity 350ms ease-out;
+    &.main-content-appear-active,
+    &.main-content-enter-active {
+      opacity: 1;
     }
   }
 
-  #patient-history-page {
-    &.transition-appear {
-      background: yellow;
-      &.transition-appear-active {
-        background: green;
-      }
+  .main-content-leave {
+    opacity: 1;
+    &.main-content-leave-active {
+      opacity: 0;
+      transition: opacity 350ms ease-out;
     }
   }
 `;

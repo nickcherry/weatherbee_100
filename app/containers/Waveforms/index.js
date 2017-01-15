@@ -7,6 +7,13 @@ import Waveform from '../Waveform';
 import Wrapper from './Wrapper';
 
 class Waveforms extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+
+  static propTypes = {
+    flow: React.PropTypes.array,
+    pressure: React.PropTypes.array,
+    volume: React.PropTypes.array,
+  };
+
   render() {
     return (
       <Wrapper>
@@ -17,12 +24,6 @@ class Waveforms extends React.PureComponent { // eslint-disable-line react/prefe
     );
   }
 }
-
-Waveforms.propTypes = {
-  flow: React.PropTypes.array,
-  pressure: React.PropTypes.array,
-  volume: React.PropTypes.array,
-};
 
 function mapStateToProps(state) {
   const waveforms = state.getIn(['ventilator', 'waveforms']);

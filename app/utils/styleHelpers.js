@@ -7,6 +7,7 @@ const DEPTHS = {
   userInputUnderlay: 8,
   userInputInnerWrapper: 9,
   userInputIncrementer: 10,
+  linkIcon: 15,
   modalWrapper: 9996,
   modalUnderlay: 9997,
   modalBody: 9998,

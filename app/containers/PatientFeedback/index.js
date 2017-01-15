@@ -7,6 +7,17 @@ import Row from './Row';
 import Wrapper from './Wrapper';
 
 class PatientFeedback extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+
+  static propTypes = {
+    pip: React.PropTypes.number,
+    map: React.PropTypes.number,
+    peep: React.PropTypes.number,
+    ie: React.PropTypes.number,
+    freq: React.PropTypes.number,
+    tidalVolume: React.PropTypes.number,
+    minuteVolume: React.PropTypes.number,
+  };
+
   render() {
     return (
       <Wrapper>
@@ -37,16 +48,6 @@ class PatientFeedback extends React.PureComponent { // eslint-disable-line react
     );
   }
 }
-
-PatientFeedback.propTypes = {
-  pip: React.PropTypes.number,
-  map: React.PropTypes.number,
-  peep: React.PropTypes.number,
-  ie: React.PropTypes.number,
-  freq: React.PropTypes.number,
-  tidalVolume: React.PropTypes.number,
-  minuteVolume: React.PropTypes.number,
-};
 
 function mapStateToProps(state) {
   const patientFeedback = state.getIn(['ventilator', 'patientFeedback']);

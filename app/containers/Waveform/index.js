@@ -9,6 +9,14 @@ import Title from './Title';
 import Wrapper from './Wrapper';
 
 class Waveform extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+  static propTypes = {
+    name: React.PropTypes.string,
+    color: React.PropTypes.string,
+    data: React.PropTypes.array,
+    getChartHeight: React.PropTypes.func,
+    getChartWidth: React.PropTypes.func,
+  };
+
   render() {
     return (
       <Wrapper innerRef={(wrapperEl) => this.wrapperEl = wrapperEl}>
@@ -29,14 +37,6 @@ class Waveform extends React.PureComponent { // eslint-disable-line react/prefer
     );
   }
 }
-
-Waveform.propTypes = {
-  name: React.PropTypes.string,
-  color: React.PropTypes.string,
-  data: React.PropTypes.array,
-  getChartHeight: React.PropTypes.func,
-  getChartWidth: React.PropTypes.func,
-};
 
 function mapStateToProps(state, ownProps) {
   return {
