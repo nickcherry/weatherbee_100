@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-// import { FormattedMessage } from 'react-intl';
 import Isvg from 'react-inlinesvg';
 
 import { getPath } from '../../routes';

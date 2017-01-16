@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
 import { DISABLE_USER_INPUT_EDITING, ENABLE_USER_INPUT_EDITING, SIMVVC_MODE, WAVEFORM_DATA_POINTS, UPDATE_USER_INPUT, TICK } from './containers/Ventilator/constants';
-import { PATIENTS } from './containers/PatientHistory/constants';
+import { PATIENTS } from './containers/PatientSelection/constants';
 
 import calculateFreq from './containers/Ventilator/calculators/patientFeedback/freq';
 import calculateIe from './containers/Ventilator/calculators/patientFeedback/ie';
