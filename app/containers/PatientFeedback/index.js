@@ -1,6 +1,8 @@
+/* Third-Party Dependencies */
 import React from 'react';
 import { connect } from 'react-redux';
 
+/* Components */
 import Cell from './Cell';
 import Feedback from './Feedback';
 import Row from './Row';

@@ -1,8 +1,11 @@
+/* Third-Party Dependencies */
 import { connect } from 'react-redux';
 import React from 'react';
 
+/* Helpers / Services / Constants */
 import { AVVC_MODE, ACPC_MODE, SIMVVC_MODE, SIMVPC_MODE, SPONT_MODE } from '../Ventilator/constants';
 
+/* Components */
 import Cell from './Cell';
 import ModeInput from './ModeInput';
 import NumericInput from './NumericInput';

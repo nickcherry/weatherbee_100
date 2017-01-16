@@ -1,10 +1,13 @@
+/* Third-Party Dependencies */
 import React from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 
+/* Helpers / Services / Constants */
 import { hideModal } from '../ModalRoot/actions';
 import messages from './messages';
 
+/* Components */
 import Button from '../../components/Button';
 import H3 from '../../components/H3';
 import P from '../../components/P';

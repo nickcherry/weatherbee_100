@@ -1,5 +1,8 @@
+/* Third-Party Dependencies */
 import styled from 'styled-components';
-import { getDepth, getRgbaColor } from '../../utils/styleHelpers';
+
+/* Helpers / Services */
+import { getDepth, getRgbaColor } from '../../utils/styleService';
 
 const Background = styled.div`
   background: linear-gradient(to right, ${getRgbaColor('codGrey')} 0%, ${getRgbaColor('mineShaft')} 100%);

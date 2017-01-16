@@ -1,5 +1,8 @@
+/* Third-Party Dependencies */
 import styled from 'styled-components';
-import { getDepth } from '../../utils/styleHelpers';
+
+/* Helpers / Services / Constants */
+import { getDepth } from '../../utils/styleService';
 
 const ModalCloseButton = styled.div`
   cursor: pointer;

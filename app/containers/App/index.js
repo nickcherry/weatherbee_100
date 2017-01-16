@@ -1,6 +1,8 @@
+/* Third-Party Dependencies */
 import React from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
+/* Components */
 import Background from './Background';
 import BackgroundPattern from './BackgroundPattern';
 import MainContent from './MainContent';

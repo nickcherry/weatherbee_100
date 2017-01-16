@@ -1,7 +1,9 @@
+/* Third-Party Dependencies */
 import styled from 'styled-components';
 import bowser from 'bowser';
 
-import { getHexColor } from '../../utils/styleHelpers';
+/* Helpers / Services / Constnats */
+import { getHexColor } from '../../utils/styleService';
 
 const Wrapper = styled.div`
   color: ${getHexColor('white')};;

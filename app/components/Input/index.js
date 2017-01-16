@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { getHexColor } from '../../utils/styleHelpers';
+import { getHexColor } from '../../utils/styleService';
 
 const Input = styled.input`
   background: ${getHexColor('white')};

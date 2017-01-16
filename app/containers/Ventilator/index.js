@@ -1,16 +1,20 @@
+/* Third-Party Dependencies */
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { FormattedMessage } from 'react-intl';
 import Isvg from 'react-inlinesvg';
 
-import patientIcon from '../../images/patient.svg';
-
+/* Helpers / Services / Constants */
 import { getPath } from '../../routes';
 import { updateWaveforms } from './actions';
 import { WAVEFORM_INTERVAL } from './constants';
 import messages from './messages';
 
+/* Assets */
+import patientIcon from '../../images/patient.svg';
+
+/* Components */
 import H1 from '../../components/H1';
 import PatientFeedback from '../PatientFeedback';
 import PatientIcon from './PatientIcon';

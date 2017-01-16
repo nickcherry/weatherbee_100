@@ -1,9 +1,12 @@
+/* Third-Party Dependencies */
 import React from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 
+/* Helpers / Services / Constants */
 import messages from './messages';
 
+/* Components */
 import FeedbackLabel from './FeedbackLabel';
 import FeedbackValue from './FeedbackValue';
 import FeedbackWrapper from './FeedbackWrapper';

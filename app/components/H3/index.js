@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { getCursiveFont } from '../../utils/styleHelpers';
+import { getCursiveFont } from '../../utils/styleService';
 
 const H3 = styled.h3`
   font-family: ${getCursiveFont()};

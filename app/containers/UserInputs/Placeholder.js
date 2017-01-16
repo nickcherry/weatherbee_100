@@ -1,5 +1,8 @@
+/* Third-Party Dependencies */
 import styled from 'styled-components';
-import { getRgbaColor } from '../../utils/styleHelpers';
+
+/* Helpers / Services / Constants */
+import { getRgbaColor } from '../../utils/styleService';
 
 const margin = '4px';
 

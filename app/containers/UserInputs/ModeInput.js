@@ -1,9 +1,12 @@
+/* Third-Party Dependencies */
 import React from 'react';
 import { connect } from 'react-redux';
 
+/* Helpers / Services / Constants */
 import { AVVC_MODE, ACPC_MODE, SIMVVC_MODE, SIMVPC_MODE, SPONT_MODE } from '../Ventilator/constants';
 import { updateUserInput } from '../Ventilator/actions';
 
+/* Components */
 import InputInnerWrapper from './InputInnerWrapper';
 import InputOuterWrapper from './InputOuterWrapper';
 import Select from './Select';

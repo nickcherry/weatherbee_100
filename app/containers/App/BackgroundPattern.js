@@ -1,5 +1,10 @@
+/* Third-Party Dependencies */
 import styled from 'styled-components';
-import { getDepth } from '../../utils/styleHelpers';
+
+/* Helpers / Services / Constants */
+import { getDepth } from '../../utils/styleService';
+
+/* Assets */
 import noise from '../../images/noise.png';
 
 const BackgroundPattern = styled.div`

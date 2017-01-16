@@ -1,11 +1,13 @@
+/* Third-Party Dependencies */
 import React from 'react';
 import { connect } from 'react-redux';
 
+/* Helpers / Services / Constants */
 import { HELP_MODAL } from './constants';
 import { hideModal } from './actions';
 
+/* Components */
 import HelpModal from '../HelpModal';
-
 import ModalBody from './ModalBody';
 import ModalCloseButton from './ModalCloseButton';
 import ModalUnderlay from './ModalUnderlay';

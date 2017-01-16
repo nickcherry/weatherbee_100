@@ -1,3 +1,4 @@
+/* Third-Party Dependencies */
 import styled from 'styled-components';
 import bowser from 'bowser';
 

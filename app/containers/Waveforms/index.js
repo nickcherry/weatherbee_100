@@ -1,8 +1,11 @@
+/* Third-Party Dependencies */
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { getHexColor } from '../../utils/styleHelpers';
+/* Helpers / Services / Constants */
+import { getHexColor } from '../../utils/styleService';
 
+/* Components */
 import Waveform from '../Waveform';
 import Wrapper from './Wrapper';
 

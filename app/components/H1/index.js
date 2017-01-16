@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { getHexColor, getCursiveFont } from '../../utils/styleHelpers';
+import { getHexColor, getCursiveFont } from '../../utils/styleService';
 
 const H1 = styled.h1`
   background: linear-gradient(to right, ${getHexColor('electricViolet')} 20%, ${getHexColor('studio')} 55%, ${getHexColor('cerise')} 90%);

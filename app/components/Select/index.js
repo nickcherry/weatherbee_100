@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { getDefaultFont } from '../../utils/styleHelpers';
+import { getDefaultFont } from '../../utils/styleService';
 
 const Select = styled.select`
   appearance: none;

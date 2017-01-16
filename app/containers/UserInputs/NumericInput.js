@@ -1,10 +1,13 @@
+/* Third-Party Dependencies */
 import React from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 
+/* Helpers / Services / Constants */
 import messages from './messages';
 import { disableUserInputEditing, enableUserInputEditing, updateUserInput } from '../Ventilator/actions';
 
+/* Components */
 import Decrement from './Decrement';
 import Increment from './Increment';
 import InputInnerWrapper from './InputInnerWrapper';

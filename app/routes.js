@@ -7,6 +7,7 @@ import { getAsyncInjectors } from 'utils/asyncInjectors';
 const ROUTES_MAP = {
   ventilator: '/',
   patientHistory: '/patient-history',
+  patientSelection: '/patients',
 };
 
 const errorLoading = (err) => {
@@ -27,7 +28,7 @@ export default function createRoutes(store) {
 
   return [
     {
-      path: ROUTES_MAP.ventilator,
+      path: getPath('ventilator'),
       getComponent(nextState, cb) {
         const importModules = Promise.all([
           System.import('containers/Ventilator'),
@@ -43,10 +44,26 @@ export default function createRoutes(store) {
       },
     },
     {
-      path: ROUTES_MAP.patientHistory,
+      path: getPath('patientHistory'),
       getComponent(nextState, cb) {
         const importModules = Promise.all([
           System.import('containers/PatientHistory'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([component]) => {
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    },
+    {
+      path: getPath('patientSelection'),
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/PatientSelection'),
         ]);
 
         const renderRoute = loadModule(cb);

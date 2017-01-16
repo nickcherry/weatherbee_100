@@ -1,5 +1,8 @@
+/* Third-Party Dependencies */
 import styled from 'styled-components';
-import { getHexColor, getDepth } from '../../utils/styleHelpers';
+
+/* Helpers / Services / Constants */
+import { getHexColor, getDepth } from '../../utils/styleService';
 
 const ModalBody = styled.div`
   background: ${getHexColor('codGrey')};

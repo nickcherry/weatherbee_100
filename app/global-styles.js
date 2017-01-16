@@ -1,5 +1,5 @@
 import { injectGlobal } from 'styled-components';
-import { getDefaultFont } from './utils/styleHelpers';
+import { getDefaultFont } from './utils/styleService';
 
 import latoLightLatin from 'fonts/lato_light_latin.woff2';
 import latoLightLatinExt from 'fonts/lato_light_latin_ext.woff2';

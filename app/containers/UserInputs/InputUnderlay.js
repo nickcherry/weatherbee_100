@@ -1,5 +1,8 @@
+/* Third-Party Dependencies */
 import styled from 'styled-components';
-import { getRgbaColor, getDepth } from '../../utils/styleHelpers';
+
+/* Helpers / Services / Constants */
+import { getRgbaColor, getDepth } from '../../utils/styleService';
 
 const InputUnderlay = styled.div`
   background: ${getRgbaColor('mineShaft', 0.95)};

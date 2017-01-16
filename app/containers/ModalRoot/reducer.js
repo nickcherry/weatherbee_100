@@ -1,12 +1,13 @@
-import { HIDE_MODAL, SHOW_MODAL } from './constants';
+/* Third-Party Dependencies */
 import { fromJS } from 'immutable';
 
-// The initial state of the user inputs
+/* Helpers / Services / Constants */
+import { HIDE_MODAL, SHOW_MODAL } from './constants';
+
 const initialState = fromJS({
   type: null,
   props: {},
 });
-
 
 function modalReducer(state = initialState, action) {
   switch (action.type) {

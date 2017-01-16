@@ -1,9 +1,12 @@
+/* Third-Party Dependencies */
 import React from 'react';
 import { connect } from 'react-redux';
 import { LineChart } from 'react-easy-chart';
 
+/* Helpers / Services / Constants */
 import { WAVEFORM_DATA_POINTS } from '../Ventilator/constants';
 
+/* Components */
 import Divider from './Divider';
 import Title from './Title';
 import Wrapper from './Wrapper';

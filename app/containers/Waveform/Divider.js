@@ -1,5 +1,6 @@
+/* Third-Party Dependencies */
 import styled from 'styled-components';
-import { getRgbaColor } from '../../utils/styleHelpers';
+import { getRgbaColor } from '../../utils/styleService';
 
 const Divider = styled.div`
   background: ${getRgbaColor('tuna', 0.6)};

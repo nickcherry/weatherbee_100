@@ -1,5 +1,8 @@
+/* Third-Party Dependencies */
 import styled from 'styled-components';
-import { getHexColor } from '../../utils/styleHelpers';
+
+/* Helpers / Services / Constants */
+import { getHexColor } from '../../utils/styleService';
 
 const Label = styled.label`
   color: ${getHexColor('londonHue')};

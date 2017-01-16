@@ -1,10 +1,16 @@
+/* Third-Party Dependencies */
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import Isvg from 'react-inlinesvg';
 
+/* Helpers / Services / Constants */
 import { getPath } from '../../routes';
+
+/* Assets */
 import ventilatorIcon from '../../images/ventilator.svg';
+
+/* Components */
 import PatientDescription from './PatientDescription';
 import PatientName from './PatientName';
 import VentilatorIcon from './VentilatorIcon';
