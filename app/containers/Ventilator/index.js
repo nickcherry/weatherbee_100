@@ -2,6 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { FormattedMessage } from 'react-intl';
+import Isvg from 'react-inlinesvg';
+
+import patientIcon from '../../images/patient.svg';
 
 import { getPath } from '../../routes';
 import { updateWaveforms } from './actions';
@@ -36,7 +39,9 @@ class Ventilator extends React.PureComponent { // eslint-disable-line react/pref
       <Wrapper>
         <header>
           <Link to={getPath('patientHistory')}>
-            <PatientIcon />
+            <PatientIcon>
+              <Isvg src={patientIcon} />
+            </PatientIcon>
           </Link>
           <H1>
             <FormattedMessage {...messages.header} />
