@@ -5,6 +5,8 @@ import latoLightLatin from 'fonts/lato_light_latin.woff2';
 import latoLightLatinExt from 'fonts/lato_light_latin_ext.woff2';
 import latoRegularLatin from 'fonts/lato_regular_latin.woff2';
 import latoRegularLatinExt from 'fonts/lato_regular_latin_ext.woff2';
+import sacramentoRegularLatin from 'fonts/sacramento_regular_latin.woff2';
+import sacramentoRegularLatinExt from 'fonts/sacramento_regular_latin_ext.woff2';
 
 /* eslint no-unused-expressions: 0 */
 injectGlobal`
@@ -29,7 +31,7 @@ injectGlobal`
     font-family: ${getDefaultFont()}, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
 
-  /* latin-ext */
+  /* Lato Light, latin-ext */
   @font-face {
     font-family: 'Lato';
     font-style: normal;
@@ -37,7 +39,7 @@ injectGlobal`
     src: local('Lato Light'), local('Lato-Light'), url(${latoLightLatin}) format('woff2');
     unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
   }
-  /* latin */
+  /* Lato Light, latin */
   @font-face {
     font-family: 'Lato';
     font-style: normal;
@@ -45,7 +47,7 @@ injectGlobal`
     src: local('Lato Light'), local('Lato-Light'), url(${latoLightLatinExt}) format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
   }
-  /* latin-ext */
+  /* Lato Regular, latin-ext */
   @font-face {
     font-family: 'Lato';
     font-style: normal;
@@ -53,12 +55,30 @@ injectGlobal`
     src: local('Lato Regular'), local('Lato-Regular'), url(${latoRegularLatin}) format('woff2');
     unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
   }
-  /* latin */
+  /* Lato Regular, latin */
   @font-face {
     font-family: 'Lato';
     font-style: normal;
     font-weight: 400;
     src: local('Lato Regular'), local('Lato-Regular'), url(${latoRegularLatinExt}) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+  }
+
+  /* Sacramento, latin-ext */
+  @font-face {
+    font-family: 'Sacramento';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Sacramento'), local('Sacramento-Regular'), url(${sacramentoRegularLatin}) format('woff2');
+    unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+  }
+
+  /* Sacramento, latin */
+  @font-face {
+    font-family: 'Sacramento';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Sacramento'), local('Sacramento-Regular'), url(${sacramentoRegularLatinExt}) format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
   }
 
