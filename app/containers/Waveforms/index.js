@@ -26,7 +26,7 @@ class Waveforms extends React.PureComponent { // eslint-disable-line react/prefe
 }
 
 function mapStateToProps(state) {
-  const waveforms = state.getIn(['ventilator', 'waveforms']);
+  const waveforms = state.getIn(['game', 'ventilator', 'waveforms']);
   return {
     flow: waveforms.get('flow').toJS(),
     pressure: waveforms.get('pressure').toJS(),

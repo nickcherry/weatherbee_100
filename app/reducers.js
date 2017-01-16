@@ -8,7 +8,7 @@ import { fromJS } from 'immutable';
 import { LOCATION_CHANGE } from 'react-router-redux';
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
 import modalReducer from 'containers/ModalRoot/reducer';
-
+import gameReducer from './gameReducer';
 /*
  * routeReducer
  *
@@ -45,6 +45,7 @@ export default function createReducer(asyncReducers) {
     route: routeReducer,
     language: languageProviderReducer,
     modal: modalReducer,
+    game: gameReducer,
     ...asyncReducers,
   });
 }

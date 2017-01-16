@@ -34,9 +34,10 @@ class PatientHistory extends React.PureComponent { // eslint-disable-line react/
 }
 
 function mapStateToProps(state) {
+  const patient = state.getIn(['game', 'patient']);
   return {
-    name: state.getIn(['patientHistory', 'patient', 'name']),
-    description: state.getIn(['patientHistory', 'patient', 'description']),
+    name: patient.get('name'),
+    description: patient.get('description'),
   };
 }
 

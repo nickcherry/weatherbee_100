@@ -84,7 +84,7 @@ export class UserInputs extends React.PureComponent { // eslint-disable-line rea
 }
 
 function mapStateToProps(state) {
-  const userInputs = state.getIn(['ventilator', 'userInputs']);
+  const userInputs = state.getIn(['game', 'ventilator', 'userInputs']);
   return {
     fi02: userInputs.get('fi02'),
     flow: userInputs.get('flow'),

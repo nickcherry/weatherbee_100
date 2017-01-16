@@ -73,7 +73,7 @@ function mapStateToProps(state, ownProps) {
     name: ownProps.name,
     value: ownProps.value,
     incrementSize: ownProps.incrementSize,
-    editing: state.getIn(['ventilator', 'editing']) === ownProps.name,
+    editing: state.getIn(['game', 'ventilator', 'editing']) === ownProps.name,
   };
 }
 

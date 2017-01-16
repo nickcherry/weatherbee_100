@@ -30,14 +30,12 @@ export default function createRoutes(store) {
       path: ROUTES_MAP.ventilator,
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          System.import('containers/Ventilator/reducer'),
           System.import('containers/Ventilator'),
         ]);
 
         const renderRoute = loadModule(cb);
 
-        importModules.then(([reducer, component]) => {
-          injectReducer('ventilator', reducer.default);
+        importModules.then(([component]) => {
           renderRoute(component);
         });
 
@@ -48,14 +46,12 @@ export default function createRoutes(store) {
       path: ROUTES_MAP.patientHistory,
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          System.import('containers/PatientHistory/reducer'),
           System.import('containers/PatientHistory'),
         ]);
 
         const renderRoute = loadModule(cb);
 
-        importModules.then(([reducer, component]) => {
-          injectReducer('patientHistory', reducer.default);
+        importModules.then(([component]) => {
           renderRoute(component);
         });
 

@@ -50,7 +50,7 @@ class PatientFeedback extends React.PureComponent { // eslint-disable-line react
 }
 
 function mapStateToProps(state) {
-  const patientFeedback = state.getIn(['ventilator', 'patientFeedback']);
+  const patientFeedback = state.getIn(['game', 'ventilator', 'patientFeedback']);
   return {
     pip: patientFeedback.get('pip'),
     map: patientFeedback.get('map'),
