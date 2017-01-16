@@ -4,8 +4,8 @@ import styled from 'styled-components';
 /* Components */
 import H2 from '../../components/H2';
 
-const PatientName = styled(H2)`
-  margin: 3em 12px 0;
+const Name = styled(H2)`
+  display: inline-block;
 `;
 
-export default PatientName;
+export default Name;

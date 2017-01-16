@@ -4,7 +4,7 @@ import styled from 'styled-components';
 /* Components */
 import P from '../../components/P';
 
-const PatientName = styled(P)`
+const Description = styled(P)`
 `;
 
-export default PatientName;
+export default Description;

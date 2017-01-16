@@ -11,14 +11,18 @@ import { getPath } from '../../routes';
 import ventilatorIcon from '../../images/ventilator.svg';
 
 /* Components */
-import PatientDescription from './PatientDescription';
-import PatientName from './PatientName';
+import BasicInfo from './BasicInfo';
+import BasicInfoDetail from './BasicInfoDetail';
+import Description from './Description';
+import Name from './Name';
 import VentilatorIcon from './VentilatorIcon';
 import Wrapper from './Wrapper';
 
 class PatientHistory extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   static propTypes = {
+    age: React.PropTypes.number,
+    gender: React.PropTypes.string,
     name: React.PropTypes.string,
     description: React.PropTypes.string,
   };
@@ -31,8 +35,12 @@ class PatientHistory extends React.PureComponent { // eslint-disable-line react/
             <Isvg src={ventilatorIcon} />
           </VentilatorIcon>
         </Link>
-        <PatientName>{this.props.name}</PatientName>
-        <PatientDescription>{this.props.description}</PatientDescription>
+        <BasicInfo>
+          <Name>{this.props.name}</Name>
+          <BasicInfoDetail>{this.props.gender}</BasicInfoDetail>
+          <BasicInfoDetail>{this.props.age}</BasicInfoDetail>
+        </BasicInfo>
+        <Description>{this.props.description}</Description>
       </Wrapper>
     );
   }
@@ -41,6 +49,8 @@ class PatientHistory extends React.PureComponent { // eslint-disable-line react/
 function mapStateToProps(state) {
   const patient = state.getIn(['game', 'patient']);
   return {
+    age: patient.get('age'),
+    gender: patient.get('gender'),
     name: patient.get('name'),
     description: patient.get('description'),
   };
