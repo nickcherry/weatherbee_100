@@ -23,8 +23,8 @@ class PatientHistory extends React.PureComponent { // eslint-disable-line react/
       <Wrapper>
         <BasicInfo>
           <Name>{this.props.name}</Name>
-          <BasicInfoDetail>{this.props.age}</BasicInfoDetail>
           <BasicInfoDetail>{this.props.gender}</BasicInfoDetail>
+          <BasicInfoDetail>{this.props.age}</BasicInfoDetail>
         </BasicInfo>
         <Description>{this.props.description}</Description>
       </Wrapper>
