@@ -7,7 +7,7 @@ import { LineChart } from 'react-easy-chart';
 import { WAVEFORM_DATA_POINTS } from '../Ventilator/constants';
 
 /* Components */
-import Divider from './Divider';
+import Divider from '../../components/Divider';
 import Title from './Title';
 import Wrapper from './Wrapper';
 

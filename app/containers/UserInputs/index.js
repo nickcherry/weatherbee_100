@@ -6,11 +6,11 @@ import React from 'react';
 import { AVVC_MODE, ACPC_MODE, SIMVVC_MODE, SIMVPC_MODE, SPONT_MODE } from '../Ventilator/constants';
 
 /* Components */
-import Cell from './Cell';
+import Cell from '../../components/Cell';
 import ModeInput from './ModeInput';
 import NumericInput from './NumericInput';
 import Placeholder from './Placeholder';
-import Row from './Row';
+import Row from '../../components/Row';
 import Wrapper from './Wrapper';
 
 export class UserInputs extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function

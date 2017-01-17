@@ -12,6 +12,12 @@ import InputOuterWrapper from './InputOuterWrapper';
 import Select from './Select';
 
 export class ModeInput extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+
+  static propTypes = {
+    name: React.PropTypes.string,
+    value: React.PropTypes.string,
+    valueChanged: React.PropTypes.func,
+  }
   render() {
     return (
       <InputOuterWrapper>
@@ -33,12 +39,6 @@ export class ModeInput extends React.PureComponent { // eslint-disable-line reac
     );
   }
 }
-
-ModeInput.propTypes = {
-  name: React.PropTypes.string,
-  value: React.PropTypes.string,
-  valueChanged: React.PropTypes.func,
-};
 
 function dispatchToProps(dispatch) {
   return {

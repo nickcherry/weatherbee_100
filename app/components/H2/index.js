@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 
 const H2 = styled.h2`
-  font-size: 1.25em;
-  font-weight: 300;
-  margin: 0.15em auto;
-  text-align: center;
+  font-size: 1.15em;
+  font-weight: 400;
+  margin: .25em auto;
   user-select: none;
 `;
 

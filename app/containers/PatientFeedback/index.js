@@ -3,9 +3,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 /* Components */
-import Cell from './Cell';
+import Cell from '../../components/Cell';
 import Feedback from './Feedback';
-import Row from './Row';
+import Row from '../../components/Row';
 import Wrapper from './Wrapper';
 
 class PatientFeedback extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
