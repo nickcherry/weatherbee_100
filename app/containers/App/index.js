@@ -7,6 +7,7 @@ import Background from './Background';
 import BackgroundPattern from './BackgroundPattern';
 import MainContent from './MainContent';
 import ModalRoot from '../ModalRoot';
+import Nav from '../Nav';
 import Wrapper from './Wrapper';
 
 export default class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -33,6 +34,7 @@ export default class App extends React.PureComponent { // eslint-disable-line re
             {React.cloneElement(this.props.children, { key: this.props.location.pathname })}
           </ReactCSSTransitionGroup>
         </MainContent>
+        <Nav />
         <ModalRoot />
       </Wrapper>
     );

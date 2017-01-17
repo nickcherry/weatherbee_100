@@ -2,10 +2,10 @@
 import styled from 'styled-components';
 
 /* Helpers / Services / Constants */
-import { getDepth } from '../../utils/styleService';
+import { getDepth, getDimension } from '../../utils/styleService';
 
 const MainContent = styled.div`
-  bottom: 0;
+  bottom: ${getDimension('navHeight')};
   left: 0;
   position: absolute;
   right: 0;

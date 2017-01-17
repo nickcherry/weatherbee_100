@@ -4,6 +4,7 @@ const DEPTHS = {
   background: 1,
   backgroundPattern: 2,
   mainContent: 3,
+  nav: 4,
   userInputUnderlay: 8,
   userInputInnerWrapper: 9,
   userInputIncrementer: 10,
@@ -22,10 +23,15 @@ const COLORS = {
   londonHue: '#bda5c9',
   mediumRedViolet: '#b52ca2',
   mineShaft: '#1f1f1f',
+  silver: '#bcbcbc',
   studio: '#8A40AF',
   tuna: '#33333d',
   white: '#fff6ff',
   windsor: '#570d7b',
+};
+
+const DIMENSIONS = {
+  navHeight: '50px',
 };
 
 export function getDefaultFont() {
@@ -50,4 +56,9 @@ export function getRgbaColor(name, alpha = 1) {
   if (!COLORS[name]) throw new Error(`Color "${name}" is not recognized!`);
   const rgb = hextToRgb(COLORS[name]);
   return `rgba(${rgb.join(', ')}, ${alpha})`;
+}
+
+export function getDimension(name) {
+  if (!DIMENSIONS[name]) throw new Error(`Dimension ${name} is not recognized!`);
+  return DIMENSIONS[name];
 }
