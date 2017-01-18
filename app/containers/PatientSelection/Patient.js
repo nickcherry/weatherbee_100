@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Isvg from 'react-inlinesvg';
 
 /* Helpers / Services / Constants */
+import { selectPatient } from './actions';
 
 /* Assets */
 import lockIcon from '../../images/lock.svg';
@@ -16,25 +17,37 @@ export class Patient extends React.PureComponent { // eslint-disable-line react/
 
   static propTypes = {
     patient: React.PropTypes.object,
+    selectedPatientId: React.PropTypes.number,
+    select: React.PropTypes.func,
   }
 
   isLocked() {
     return !this.props.patient.unlocked;
   }
 
+  isCurrent() {
+    return this.props.patient.id === this.props.selectedPatientId;
+  }
+
   render() {
     return (
-      <PatientWrapper locked={this.isLocked()}>
+      <PatientWrapper current={this.isCurrent()} locked={this.isLocked()} onClick={() => this.isLocked() ? null : this.props.select(this.props.patient)}>
         <Isvg src={this.isLocked() ? lockIcon : patientIcon} />
       </PatientWrapper>
     );
   }
 }
 
-function dispatchToProps() {
-  return {
+function mapStateToProps(state, ownProps) {
+  return Object.assign({}, ownProps, {
+    selectedPatientId: state.getIn(['game', 'patient', 'id']),
+  });
+}
 
+function dispatchToProps(dispatch) {
+  return {
+    select: (patient) => dispatch(selectPatient(patient)),
   };
 }
 
-export default connect(this.props, dispatchToProps)(Patient);
+export default connect(mapStateToProps, dispatchToProps)(Patient);
