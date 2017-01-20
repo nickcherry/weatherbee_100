@@ -12,9 +12,9 @@ import Wrapper from './Wrapper';
 class Waveforms extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   static propTypes = {
-    flow: React.PropTypes.array,
-    pressure: React.PropTypes.array,
-    volume: React.PropTypes.array,
+    flow: React.PropTypes.object,
+    pressure: React.PropTypes.object,
+    volume: React.PropTypes.object,
   };
 
   render() {
@@ -31,9 +31,9 @@ class Waveforms extends React.PureComponent { // eslint-disable-line react/prefe
 function mapStateToProps(state) {
   const waveforms = state.getIn(['game', 'ventilator', 'waveforms']);
   return {
-    flow: waveforms.get('flow').toJS(),
-    pressure: waveforms.get('pressure').toJS(),
-    volume: waveforms.get('volume').toJS(),
+    flow: waveforms.get('flow'),
+    pressure: waveforms.get('pressure'),
+    volume: waveforms.get('volume'),
   };
 }
 

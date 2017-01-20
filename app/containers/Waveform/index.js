@@ -44,7 +44,7 @@ function mapStateToProps(state, ownProps) {
   return {
     name: ownProps.name,
     color: ownProps.color,
-    data: [ownProps.data.map((y, x) => ({ x, y }))],
+    data: [ownProps.data.map((y, x) => ({ x, y })).toJS()],
     getChartHeight,
     getChartWidth,
   };
