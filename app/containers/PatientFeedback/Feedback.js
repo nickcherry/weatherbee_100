@@ -1,13 +1,9 @@
 /* Third-Party Dependencies */
 import React from 'react';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
-
-/* Helpers / Services / Constants */
-import messages from './messages';
 
 /* Components */
-import FeedbackLabel from './FeedbackLabel';
+import FeedbackLabelContainer from './FeedbackLabelContainer';
 import FeedbackValue from './FeedbackValue';
 import FeedbackWrapper from './FeedbackWrapper';
 
@@ -16,9 +12,7 @@ export class Feedback extends React.PureComponent { // eslint-disable-line react
     return (
       <FeedbackWrapper>
         <FeedbackValue>{this.props.value}</FeedbackValue>
-        <FeedbackLabel>
-          <FormattedMessage {...messages[`${this.props.name}Short`]}></FormattedMessage>
-        </FeedbackLabel>
+        <FeedbackLabelContainer name={this.props.name} />
       </FeedbackWrapper>
     );
   }
