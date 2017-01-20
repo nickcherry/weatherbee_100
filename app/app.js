@@ -30,6 +30,9 @@ import configureStore from './store';
 import 'sanitize.css/sanitize.css';
 import './global-styles';
 
+// import Perf from 'react-addons-perf';
+// window.Perf = Perf;
+
 // Observe loading of Lato (to remove Lato, remove the <link> tag in
 // the index.html file and this observer)
 const fontObserver = new FontFaceObserver('Lato', {});

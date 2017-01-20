@@ -6,9 +6,8 @@ import { LineChart } from 'react-easy-chart';
 /* Helpers / Services / Constants */
 import { WAVEFORM_DATA_POINTS } from '../Ventilator/constants';
 
-/* Components */
-import Divider from '../../components/Divider';
-import Title from './Title';
+/* Components and Containers */
+import TitleContainer from './TitleContainer';
 import Wrapper from './Wrapper';
 
 class Waveform extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -23,10 +22,7 @@ class Waveform extends React.PureComponent { // eslint-disable-line react/prefer
   render() {
     return (
       <Wrapper innerRef={(wrapperEl) => this.wrapperEl = wrapperEl}>
-        <Divider />
-        <Title color={this.props.color}>
-          {this.props.name}
-        </Title>
+        <TitleContainer name={this.props.name} color={this.props.color} />
         <LineChart
           width={this.props.getChartWidth(this.wrapperEl)}
           height={this.props.getChartHeight(this.wrapperEl)}
@@ -41,13 +37,16 @@ class Waveform extends React.PureComponent { // eslint-disable-line react/prefer
   }
 }
 
+const getChartHeight = (wrapperEl) => wrapperEl ? wrapperEl.clientHeight - 6 : 0;
+const getChartWidth = (wrapperEl) => wrapperEl ? wrapperEl.clientWidth : 0;
+
 function mapStateToProps(state, ownProps) {
   return {
     name: ownProps.name,
     color: ownProps.color,
     data: [ownProps.data.map((y, x) => ({ x, y }))],
-    getChartHeight: (wrapperEl) => wrapperEl ? wrapperEl.clientHeight - 6 : 0,
-    getChartWidth: (wrapperEl) => wrapperEl ? wrapperEl.clientWidth : 0,
+    getChartHeight,
+    getChartWidth,
   };
 }
 
