@@ -14,10 +14,10 @@ import Select from './Select';
 export class ModeInput extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   static propTypes = {
-    name: React.PropTypes.string,
     value: React.PropTypes.string,
     valueChanged: React.PropTypes.func,
   }
+
   render() {
     return (
       <InputOuterWrapper>
@@ -25,7 +25,7 @@ export class ModeInput extends React.PureComponent { // eslint-disable-line reac
           <Select
             defaultValue={this.props.value}
             innerRef={(el) => this.selectEl = el}
-            onChange={(e) => this.props.valueChanged(e, this.props.name)}
+            onChange={this.props.valueChanged}
           >
             <option>{AVVC_MODE}</option>
             <option>{ACPC_MODE}</option>
@@ -42,14 +42,13 @@ export class ModeInput extends React.PureComponent { // eslint-disable-line reac
 
 function mapStateToProps(state, ownProps) {
   return {
-    name: ownProps.name,
     value: state.getIn(['game', 'ventilator', 'userInputs', ownProps.name]),
   };
 }
 
-function dispatchToProps(dispatch) {
+function dispatchToProps(dispatch, ownProps) {
   return {
-    valueChanged: (e, inputName) => dispatch(updateUserInput(inputName, e.target.value)),
+    valueChanged: (e) => dispatch(updateUserInput(ownProps.name, e.target.value)),
   };
 }
 
