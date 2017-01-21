@@ -12,17 +12,17 @@ import Wrapper from './Wrapper';
 
 class Waveform extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   static propTypes = {
-    name: React.PropTypes.string,
     color: React.PropTypes.string,
     data: React.PropTypes.array,
     getChartHeight: React.PropTypes.func,
     getChartWidth: React.PropTypes.func,
+    title: React.PropTypes.string,
   };
 
   render() {
     return (
       <Wrapper innerRef={(wrapperEl) => this.wrapperEl = wrapperEl}>
-        <TitleContainer name={this.props.name} color={this.props.color} />
+        <TitleContainer title={this.props.title} color={this.props.color} />
         <LineChart
           width={this.props.getChartWidth(this.wrapperEl)}
           height={this.props.getChartHeight(this.wrapperEl)}
@@ -41,10 +41,11 @@ const getChartHeight = (wrapperEl) => wrapperEl ? wrapperEl.clientHeight - 6 : 0
 const getChartWidth = (wrapperEl) => wrapperEl ? wrapperEl.clientWidth : 0;
 
 function mapStateToProps(state, ownProps) {
+  const data = state.getIn(['game', 'ventilator', 'waveforms', ownProps.name]);
   return {
-    name: ownProps.name,
     color: ownProps.color,
-    data: [ownProps.data.map((y, x) => ({ x, y })).toJS()],
+    title: ownProps.title,
+    data: [data.map((y, x) => ({ x, y })).toJS()],
     getChartHeight,
     getChartWidth,
   };

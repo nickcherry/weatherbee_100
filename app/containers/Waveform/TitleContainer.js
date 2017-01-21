@@ -8,7 +8,7 @@ import Title from './Title';
 
 class TitleContainer extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   static propTypes = {
-    name: React.PropTypes.string,
+    title: React.PropTypes.string,
     color: React.PropTypes.string,
   };
 
@@ -17,7 +17,7 @@ class TitleContainer extends React.PureComponent { // eslint-disable-line react/
       <div>
         <Divider />
         <Title color={this.props.color}>
-          {this.props.name}
+          {this.props.title}
         </Title>
       </div>
     );
