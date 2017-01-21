@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
 
-const publicPath = '/weatherbee-100/';
+const publicPath = process.env.PUBLIC_PATH || '';
 
 module.exports = require('./webpack.base.babel')({
   // In production, we skip all hot-reloading stuff

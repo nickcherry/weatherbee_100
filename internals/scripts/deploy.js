@@ -10,6 +10,7 @@ const s3 = require('s3');
 const ROOT_DIR = `${ __dirname }/../..`
 const BUILD_DIR = `${ ROOT_DIR }/build`;
 const SECRETS = JSON.parse(fs.readFileSync(`${ ROOT_DIR }/secrets.json`));
+const PUBLIC_PATH = '/weatherbee-100/';
 
 /***********************************************/
 /* Helpers */
@@ -31,10 +32,9 @@ const error = (err) => {
 /***********************************************/
 
 log('🔧', 'Compiling assets');
-if (exec(`cd ${ROOT_DIR}; npm run build`).status !== 0) {
+if (exec(`cd ${ROOT_DIR}; PUBLIC_PATH='${PUBLIC_PATH}' npm run build`).status !== 0) {
   error(`There was a problem compiling the assets! ${ result.stderr }`);
 }
-
 
 log('🚀', 'Uploading build to S3');
 const s3Client = s3.createClient({
