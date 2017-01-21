@@ -17,11 +17,6 @@ import Label from './Label';
 import Value from './Value';
 
 export class NumericInput extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-  constructor(props) {
-    super(props);
-    this.state = { editing: false };
-  }
-
   render() {
     return (
       <InputOuterWrapper>
@@ -59,42 +54,39 @@ export class NumericInput extends React.PureComponent { // eslint-disable-line r
 
 NumericInput.propTypes = {
   name: React.PropTypes.string,
-  value: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.number,
-  ]),
-  incrementSize: React.PropTypes.number,
-  editing: React.PropTypes.bool,
-  toggleEditing: React.PropTypes.func,
   disableEditing: React.PropTypes.func,
-  increment: React.PropTypes.func,
+  editing: React.PropTypes.bool,
   decrement: React.PropTypes.func,
+  increment: React.PropTypes.func,
+  incrementSize: React.PropTypes.number,
+  toggleEditing: React.PropTypes.func,
+  value: React.PropTypes.number,
 };
 
 function mapStateToProps(state, ownProps) {
   return {
     name: ownProps.name,
-    value: ownProps.value,
-    incrementSize: ownProps.incrementSize,
     editing: state.getIn(['game', 'ventilator', 'editing']) === ownProps.name,
+    incrementSize: ownProps.name === 'tidalVolume' ? 50 : 1,
+    value: state.getIn(['game', 'ventilator', 'userInputs', ownProps.name]),
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
+    decrement: (name, currentValue, incrementSize) => {
+      dispatch(updateUserInput(name, currentValue - incrementSize));
+    },
+    disableEditing: (name) => dispatch(disableUserInputEditing(name)),
+    increment: (name, currentValue, incrementSize) => {
+      dispatch(updateUserInput(name, currentValue + incrementSize));
+    },
     toggleEditing: (name, editing) => {
       if (editing) {
         dispatch(disableUserInputEditing(name));
       } else {
         dispatch(enableUserInputEditing(name));
       }
-    },
-    disableEditing: (name) => dispatch(disableUserInputEditing(name)),
-    increment: (name, currentValue, incrementSize) => {
-      dispatch(updateUserInput(name, currentValue + incrementSize));
-    },
-    decrement: (name, currentValue, incrementSize) => {
-      dispatch(updateUserInput(name, currentValue - incrementSize));
     },
   };
 }

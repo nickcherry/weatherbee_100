@@ -40,10 +40,17 @@ export class ModeInput extends React.PureComponent { // eslint-disable-line reac
   }
 }
 
+function mapStateToProps(state, ownProps) {
+  return {
+    name: ownProps.name,
+    value: state.getIn(['game', 'ventilator', 'userInputs', ownProps.name]),
+  };
+}
+
 function dispatchToProps(dispatch) {
   return {
     valueChanged: (e, inputName) => dispatch(updateUserInput(inputName, e.target.value)),
   };
 }
 
-export default connect(this.props, dispatchToProps)(ModeInput);
+export default connect(mapStateToProps, dispatchToProps)(ModeInput);

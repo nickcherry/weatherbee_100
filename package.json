@@ -111,7 +111,7 @@
         "always"
       ],
       "arrow-body-style": [
-        2,
+        1,
         "as-needed"
       ],
       "comma-dangle": [

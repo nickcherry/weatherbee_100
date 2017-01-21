@@ -1,4 +1,5 @@
 /* Third-Party Dependencies */
+import { memoize } from 'lodash';
 import { connect } from 'react-redux';
 import React from 'react';
 
@@ -13,72 +14,55 @@ import Placeholder from './Placeholder';
 import Row from '../../components/Row';
 import Wrapper from './Wrapper';
 
+const NUMERIC_ROWS = {
+  [AVVC_MODE]: [
+    ['rate', 'tidalVolume', 'peep', 'fi02'],
+    ['iTime', 'sensitivity', 'flow', null],
+  ],
+  [ACPC_MODE]: [
+    ['rate', 'pressureControl', 'peep', 'fi02'],
+    ['iTime', 'sensitivity', 'flow', null],
+  ],
+  [SIMVVC_MODE]: [
+    ['rate', 'tidalVolume', 'pressureSupport', 'peep'],
+    ['fi02', 'iTime', 'sensitivity', 'flow'],
+  ],
+  [SIMVPC_MODE]: [
+    ['rate', 'tidalVolume', 'pressureSupport', 'peep'],
+    ['fi02', 'iTime', 'sensitivity', 'flow'],
+  ],
+  [SPONT_MODE]: [
+    ['pressureSupport', 'peep', 'fi02', 'iTime'],
+    ['sensitivity', 'flow', null, null],
+  ],
+};
+
+const numericRowsFor = memoize((mode) => {
+  return NUMERIC_ROWS[mode].map((inputNames, rowIndex) => {
+    const cells = inputNames.map((inputName, cellIndex) => {
+      return (
+        <Cell key={cellIndex}>
+          {inputName ? <NumericInput name={inputName} /> : <Placeholder />}
+        </Cell>
+      );
+    });
+    return <Row key={rowIndex}>{cells}</Row>;
+  });
+});
+
 export class UserInputs extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   static propTypes = {
-    fi02: React.PropTypes.number, // eslint-disable-line react/no-unused-prop-types
-    flow: React.PropTypes.number, // eslint-disable-line react/no-unused-prop-types
-    iTime: React.PropTypes.number, // eslint-disable-line react/no-unused-prop-types
-    mode: React.PropTypes.string, // eslint-disable-line react/no-unused-prop-types
-    peep: React.PropTypes.number, // eslint-disable-line react/no-unused-prop-types
-    pressureControl: React.PropTypes.number, // eslint-disable-line react/no-unused-prop-types
-    pressureSupport: React.PropTypes.number, // eslint-disable-line react/no-unused-prop-types
-    rate: React.PropTypes.number, // eslint-disable-line react/no-unused-prop-types
-    sensitivity: React.PropTypes.number, // eslint-disable-line react/no-unused-prop-types
-    tidalVolume: React.PropTypes.number, // eslint-disable-line react/no-unused-prop-types
-  };
-
-  getRows() {
-    switch (this.props.mode) {
-      case AVVC_MODE:
-        return [['rate', 'tidalVolume', 'peep', 'fi02'],
-                ['iTime', 'sensitivity', 'flow', null]];
-      case ACPC_MODE:
-        return [['rate', 'pressureControl', 'peep', 'fi02'],
-                ['iTime', 'sensitivity', 'flow', null]];
-      case SIMVVC_MODE:
-        return [['rate', 'tidalVolume', 'pressureSupport', 'peep'],
-                ['fi02', 'iTime', 'sensitivity', 'flow']];
-      case SIMVPC_MODE:
-        return [['rate', 'pressureControl', 'pressureSupport', 'peep'],
-                ['fi02', 'iTime', 'sensitivity', 'flow']];
-      case SPONT_MODE:
-        return [['pressureSupport', 'peep', 'fi02', 'iTime'],
-                ['sensitivity', 'flow', null, null]];
-      default:
-        return [];
-    }
-  }
-
-  getIncrementSize(inputName) {
-    if (inputName === 'tidalVolume') return 50;
-    return 1;
+    mode: React.PropTypes.string,
   }
 
   render() {
     return (
       <Wrapper>
-        {this.getRows().map((inputNames, rowIndex) => {
-          const cells = inputNames.map((inputName, cellIndex) => {
-            if (!inputName) {
-              return <Cell key={cellIndex}><Placeholder /></Cell>;
-            }
-            return (
-              <Cell key={cellIndex}>
-                <NumericInput
-                  name={inputName}
-                  value={this.props[inputName]}
-                  incrementSize={this.getIncrementSize(inputName)}
-                >
-                </NumericInput>
-              </Cell>
-            );
-          });
-          return <Row key={rowIndex}>{cells}</Row>;
-        })}
+        {numericRowsFor(this.props.mode)}
         <Row>
           <Cell>
-            <ModeInput name="mode" value={this.props.mode}></ModeInput>
+            <ModeInput name="mode"></ModeInput>
           </Cell>
         </Row>
       </Wrapper>
@@ -87,18 +71,8 @@ export class UserInputs extends React.PureComponent { // eslint-disable-line rea
 }
 
 function mapStateToProps(state) {
-  const userInputs = state.getIn(['game', 'ventilator', 'userInputs']);
   return {
-    fi02: userInputs.get('fi02'),
-    flow: userInputs.get('flow'),
-    iTime: userInputs.get('iTime'),
-    mode: userInputs.get('mode'),
-    peep: userInputs.get('peep'),
-    pressureControl: userInputs.get('pressureControl'),
-    pressureSupport: userInputs.get('pressureSupport'),
-    rate: userInputs.get('rate'),
-    sensitivity: userInputs.get('sensitivity'),
-    tidalVolume: userInputs.get('tidalVolume'),
+    mode: state.getIn(['game', 'ventilator', 'userInputs', 'mode']),
   };
 }
 
