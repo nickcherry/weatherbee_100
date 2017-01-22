@@ -25,6 +25,7 @@ import FontFaceObserver from 'fontfaceobserver';
 import { useScroll } from 'react-router-scroll';
 import LanguageProvider from 'containers/LanguageProvider';
 import configureStore from './store';
+import bugsnag from './bugsnag';
 
 // Import CSS reset and Global Styles
 import 'sanitize.css/sanitize.css';
@@ -70,6 +71,8 @@ const rootRoute = {
   childRoutes: createRoutes(store),
 };
 
+// Initialize Bugsnag
+bugsnag(store);
 
 const render = (translatedMessages) => {
   ReactDOM.render(
