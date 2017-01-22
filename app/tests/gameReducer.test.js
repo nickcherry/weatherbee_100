@@ -4,7 +4,7 @@ import chaiImmutable from 'chai-immutable';
 
 /* App Dependencies */
 import reducer from '../gameReducer';
-// import { DISABLE_USER_INPUT_EDITING, ENABLE_USER_INPUT_EDITING, SIMVVC_MODE, WAVEFORM_DATA_POINTS, UPDATE_USER_INPUT, TICK } from '../containers/Ventilator/constants';
+import { DISABLE_USER_INPUT_EDITING, ENABLE_USER_INPUT_EDITING } from '../containers/Ventilator/constants';
 import { PATIENTS, SELECT_PATIENT } from '../containers/PatientSelection/constants';
 
 /* Setup */
@@ -62,6 +62,21 @@ describe('SELECT_PATIENT', () => {
   it('should select the patient', () => {
     const patient = PATIENTS.last();
     const state = reducer(undefined, { type: SELECT_PATIENT, patient });
-    expect(state.get('patient')).to.equal(patient);
+    expect(state).to.have.property('patient', patient);
+  });
+});
+
+describe('DISABLE_USER_INPUT_EDITING', () => {
+  it('should disable editing', () => {
+    const state = reducer(undefined, { type: DISABLE_USER_INPUT_EDITING });
+    expect(state).to.have.deep.property('ventilator.editing', undefined);
+  });
+});
+
+describe('ENABLE_USER_INPUT_EDITING', () => {
+  it('should enable editing', () => {
+    const inputName = 'someInput';
+    const state = reducer(undefined, { type: ENABLE_USER_INPUT_EDITING, inputName });
+    expect(state).to.have.deep.property('ventilator.editing', inputName);
   });
 });
