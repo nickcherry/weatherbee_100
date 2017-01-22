@@ -15,7 +15,7 @@ import calculatePressure from './containers/Ventilator/calculators/waveforms/pre
 import calculateVolume from './containers/Ventilator/calculators/waveforms/volume';
 
 const initialState = fromJS({
-  patient: PATIENTS[0],
+  patient: PATIENTS.first(),
   ventilator: {
     editing: undefined,
     time: 0,
@@ -35,10 +35,10 @@ const initialState = fromJS({
       freq: 0,
       ie: 0,
       map: 0,
-      tidalVolume: 0,
-      pip: 0,
-      peep: 0,
       minuteVolume: 0,
+      peep: 0,
+      pip: 0,
+      tidalVolume: 0,
     },
     waveforms: {
       flow: [],
@@ -94,7 +94,7 @@ function handleTick(state) {
     }));
 }
 
-function ventilatorReducer(state = initialState, action) {
+function reducer(state = initialState, action) {
   switch (action.type) {
     case SELECT_PATIENT:
       return handleSelectPatient(state, action);
@@ -111,4 +111,4 @@ function ventilatorReducer(state = initialState, action) {
   }
 }
 
-export default ventilatorReducer;
+export default reducer;
