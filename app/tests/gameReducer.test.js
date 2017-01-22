@@ -5,7 +5,7 @@ import chaiImmutable from 'chai-immutable';
 /* App Dependencies */
 import reducer from '../gameReducer';
 // import { DISABLE_USER_INPUT_EDITING, ENABLE_USER_INPUT_EDITING, SIMVVC_MODE, WAVEFORM_DATA_POINTS, UPDATE_USER_INPUT, TICK } from '../containers/Ventilator/constants';
-// import { PATIENTS, SELECT_PATIENT } from '../containers/PatientSelection/constants';
+import { PATIENTS, SELECT_PATIENT } from '../containers/PatientSelection/constants';
 
 /* Setup */
 const expect = chai.expect;
@@ -55,5 +55,13 @@ describe('default state', () => {
       'pressure',
       'volume',
     ]);
+  });
+});
+
+describe('SELECT_PATIENT', () => {
+  it('should select the patient', () => {
+    const patient = PATIENTS.last();
+    const state = reducer(undefined, { type: SELECT_PATIENT, patient });
+    expect(state.get('patient')).to.equal(patient);
   });
 });
