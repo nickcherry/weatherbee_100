@@ -66,25 +66,26 @@ function handleUpdateUserInput(state, action) {
 
 function handleTick(state) {
   const time = state.getIn(['ventilator', 'time']) + 1;
+  const patient = state.get('patient').toJS();
   const userInputs = state.getIn(['ventilator', 'userInputs']).toJS();
   const existingWaveforms = state.getIn(['ventilator', 'waveforms']).toJS();
 
   function shiftData(waveforms, calculator) {
     return waveforms
       .slice(-WAVEFORM_DATA_POINTS)
-      .concat(calculator(time, userInputs));
+      .concat(calculator(time, patient, userInputs));
   }
 
   return state
     .setIn(['ventilator', 'time'], time)
     .setIn(['ventilator', 'patientFeedback'], fromJS({
-      freq: calculateFreq(time, userInputs),
-      ie: calculateIe(time, userInputs),
-      map: calculateMap(time, userInputs),
-      minuteVolume: calculateMinuteVolume(time, userInputs),
-      peep: calculatePeep(time, userInputs),
-      pip: calculatePip(time, userInputs),
-      tidalVolume: calculateTidalVolume(time, userInputs),
+      freq: calculateFreq(time, patient, userInputs),
+      ie: calculateIe(time, patient, userInputs),
+      map: calculateMap(time, patient, userInputs),
+      minuteVolume: calculateMinuteVolume(time, patient, userInputs),
+      peep: calculatePeep(time, patient, userInputs),
+      pip: calculatePip(time, patient, userInputs),
+      tidalVolume: calculateTidalVolume(time, patient, userInputs),
     }))
     .setIn(['ventilator', 'waveforms'], fromJS({
       flow: shiftData(existingWaveforms.flow, calculateFlow),
