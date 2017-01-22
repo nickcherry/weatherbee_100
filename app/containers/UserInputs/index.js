@@ -37,9 +37,9 @@ const NUMERIC_ROWS = {
   ],
 };
 
-const numericRowsFor = memoize((mode) => {
+const numericRowsFor = memoize((mode) => { // eslint-disable-line arrow-body-style
   return NUMERIC_ROWS[mode].map((inputNames, rowIndex) => {
-    const cells = inputNames.map((inputName, cellIndex) => {
+    const cells = inputNames.map((inputName, cellIndex) => { // eslint-disable-line arrow-body-style
       return (
         <Cell key={cellIndex}>
           {inputName ? <NumericInput name={inputName} /> : <Placeholder />}
