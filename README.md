@@ -1,3 +1,5 @@
+[![Build Status](http://circleci-badges-max.herokuapp.com/img/nickcherry/weatherbee_100/master?token=498d357b6f4c6af48303b67f289ae84bd8c2f276)](https://circleci.com/gh/nickcherry/weatherbee_100/tree/master)
+
 # Weatherbee-100
 
 A ventilator simulation app, work in progress available at [https://s3.amazonaws.com/weatherbee-100/index.html](https://s3.amazonaws.com/weatherbee-100/index.html).
