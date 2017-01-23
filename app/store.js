@@ -7,20 +7,25 @@ import { fromJS } from 'immutable';
 import { routerMiddleware } from 'react-router-redux';
 import createSagaMiddleware from 'redux-saga';
 import createReducer from './reducers';
-import { buildStorageMiddleware, fetchState } from './localStorage';
+import { buildStorageMiddleware, isNativeStorageSupported } from './nativeStorage';
 import { TICK } from './containers/Ventilator/constants';
 
 const sagaMiddleware = createSagaMiddleware();
 
-export default function configureStore(history) {
+export default function configureStore(initialState, history) {
   // Create the store with two middlewares
   // 1. sagaMiddleware: Makes redux-sagas work
   // 2. routerMiddleware: Syncs the location/URL path to the state
   const middlewares = [
     sagaMiddleware,
     routerMiddleware(history),
-    buildStorageMiddleware({ excludedActions: [TICK] }),
   ];
+
+  if (isNativeStorageSupported()) {
+    middlewares.push(buildStorageMiddleware({ excludedActions: [TICK] }, null, (err) => {
+      window.Bugsnag.notify(err);
+    }));
+  }
 
   const enhancers = [
     applyMiddleware(...middlewares),
@@ -35,11 +40,9 @@ export default function configureStore(history) {
       window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : compose;
   /* eslint-enable */
 
-  const initialState = fromJS(fetchState() || {});
-
   const store = createStore(
     createReducer(),
-    initialState,
+    fromJS(initialState),
     composeEnhancers(...enhancers)
   );
 
